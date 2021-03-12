@@ -8,7 +8,7 @@ for(package in packages){
 rm(package, packages)  
 
 source("ui.R")
-  source("server.R")
+source("server.R")
 
-  runApp("~/ShinyFairyRings")
+runApp("~/ShinyFairyRings")
   
