@@ -23,11 +23,10 @@ shinyUI(dashboardPagePlus(skin = "blue-light",
                                                    tabName = "aoi",
                                                    fluidRow(
                                                      column(
-                                                       boxPlus(
-                                                         h3(textOutput("selected_var")),
-                                                         fluidRow(
-                                                           leaflet::leafletOutput("map", height = 600)
-                                                         ), width = 12), width = 9)
+                                                       h3("Blablabl...Region of interest....blabla...S"),
+                                                       fluidRow(
+                                                         leaflet::leafletOutput("map", height = 600)
+                                                       ), width = 10, offset = 1)
                                                    )
                                                  ),
                                                  tabItem(
