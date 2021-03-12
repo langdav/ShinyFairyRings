@@ -1,9 +1,3 @@
-library(shiny)
-library(shinydashboard)
-library(shinydashboardPlus)
-library(png)
-library(dygraphs)
-
 # User interface ----
 shinyUI(dashboardPagePlus(skin = "blue-light",
                           title = "Detect Fairy Rings using machine learning",

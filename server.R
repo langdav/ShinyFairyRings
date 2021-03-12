@@ -1,8 +1,3 @@
-library(shiny)
-library(shinydashboard);library(shinydashboardPlus)
-library(png)
-library(dygraphs)
-
 source("global.R")
 
 shinyServer(function(input, output, session) {

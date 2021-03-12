@@ -1,3 +1,13 @@
+### load packages
+packages <- c("shiny", "shinydashboard", "shinydashboardPlus", "png", "tidyverse", "dygraphs", "leaflet")
+for(package in packages){
+  if (!require(package, character.only = TRUE)){
+    install.packages(package)
+    library(package,character.only = TRUE)
+  }
+}
+rm(package, packages) 
+
 convert.to.pos <- function(chosen_date, chosen_time) {
   date <- as.character(chosen_date)
   time <- as.character(chosen_time)
