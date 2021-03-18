@@ -17,8 +17,8 @@ shinyServer(function(input, output, session) {
       leaflet() %>%
         addProviderTiles(providers$Esri.WorldImagery,
                          options = providerTileOptions(noWrap = TRUE)) %>%
-        addRectangles(lng1 = 1.6609, lat1 = 42.0986, lng2 = 1.6619, lat2 = 42.0993, fill = F, color = "red") %>%
-        setView(1.6614,42.099, zoom = 17)
+        addRectangles(lng1 = 1.659, lat1 = 42.0977, lng2 = 1.664, lat2 = 42.1005, fill = F, color = "red") %>%
+        setView(1.6614,42.099, zoom = 16)
     }
   })
   
@@ -26,80 +26,60 @@ shinyServer(function(input, output, session) {
   #---------------------------
   output$area_of_interest <- renderPlot({
     
-    ima <- readPNG("images/rgb.png")
+    ima <- readPNG("images/aoi_all.png")
     par(mar = rep(0,4))
     par(bg = NA)
     plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
     rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
     
- }, width = 550, height = 550)
+ }, width = 600, height = 500)
   
   ## plot rgb ###
   #--------------
-  output$resampling_example <- renderPlot({
+  output$aoi_to_stack <- renderPlot({
+    
+    ima <- readPNG("images/aoi_to_stack.png")
+    par(mar = rep(0,4), bg = NA)
+    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
+    rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
+    
+  }, width = 1200, height = 500)
+  
+  ## plot rgb ###
+  #--------------
+  output$res_demo <- renderPlot({
     
     ima <- readPNG("images/res_demo.png")
     par(mar = rep(0,4), bg = NA)
     plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, -10, -10, 110, 110, interpolate = TRUE)
+    rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
     
-  }, width = 900, height = 450)
+  }, width = 1200, height = 500)
   
-  ## plot rgb ###
-  #--------------
-  output$rgb <- renderPlot({
+  output$plotly <- renderPlotly(
     
-    ima <- readPNG("images/rgb.png")
-    par(mar = rep(0,4))
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, -10, -10, 110, 110, interpolate = TRUE)
-    
-  }, width = 400, height = 400)
-  
-  ## plot red band ###
-  #-------------------
-  output$red_band <- renderPlot({
-    
-    ima <- readPNG("images/red_band.png")
-    par(mar = rep(0,4))
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, -10, -10, 110, 110, interpolate = TRUE)
-    
-  }, width = 400, height = 400)
-  
-  ## plot green band ###
-  #---------------------
-  output$green_band <- renderPlot({
-    
-    ima <- readPNG("images/green_band.png")
-    par(mar = rep(0,4))
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, -10, -10, 110, 110, interpolate = TRUE)
-    
-  }, width = 400, height = 400)
-  
-  ## plot green band ###
-  #---------------------
-  output$blue_band <- renderPlot({
-    
-    ima <- readPNG("images/blue_band.png")
-    par(mar = rep(0,4))
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, -10, -10, 110, 110, interpolate = TRUE)
-    
-  }, width = 400, height = 400)
-  
-  output$test <- renderPlotly(
-    test <- ggplotly(gplot(fr_selected_brick[[5]]) + 
+    plotly <- ggplotly(gplot(fr_selected_small[[as.integer(input$chosen_layer)]]) + 
                        geom_tile(aes(fill = value)) +
                        scale_fill_gradient(low = 'white', high = 'black') +
                        coord_equal() +
                        theme_bw() + 
-                       theme(panel.border = element_blank(),
+                       theme(rect = element_rect(fill = "transparent"),
+                             panel.background = element_rect(fill = "transparent"),
+                             panel.border = element_blank(),
                              panel.grid.major = element_blank(),
                              panel.grid.minor = element_blank(),
-                             axis.line = element_line(colour = "black"),
-                             axis.title = element_blank()))
+                             axis.title = element_blank(),
+                             axis.line = element_blank(),
+                             axis.ticks = element_blank(),
+                             axis.text = element_blank()))
+    
   )
+  
+  ## include markdown, that is describing the current layer ###
+  #------------------------------------------------------------
+  output$doc_to_display <- renderUI({
+    layer_description <- paste0("descriptions/desc_", names(fr_selected_small)[as.integer(input$chosen_layer)], ".Rmd")
+    includeMarkdown(layer_description)
+  })
  }
 )

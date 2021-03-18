@@ -44,56 +44,39 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                      column(
                                                        h3("Blablabl...RGB Rasterstack"),
                                                        br(),
-                                                       includeMarkdown("descriptions/desc_rgb_stack.Rmd"),
+                                                       includeMarkdown("descriptions/desc_used_rasterstack.Rmd"),
+                                                       br(),
+                                                       imageOutput(outputId = "aoi_to_stack"),
+                                                       br(),
+                                                       br(),
+                                                       br(),
+                                                       br(),
+                                                       br(),
+                                                       includeMarkdown("descriptions/desc_rescaling.Rmd"),
+                                                       br(),
+                                                       imageOutput(outputId = "res_demo"),
+                                                       br(),
+                                                       br(),
+                                                       br(),
+                                                       br(),
+                                                       br(),
+                                                       includeMarkdown("descriptions/desc_layers.Rmd"),
+                                                       br(),
                                                        width = 10, offset = 1)),
-                                                   br(),
                                                    fluidRow(
                                                      column(
-                                                       imageOutput(outputId = "resampling_example"),
-                                                       width = 7, offset = 2)),
-                                                   br(),
-                                                   br(),
-                                                   br(),
-                                                   fluidRow(
+                                                       radioButtons("chosen_layer", label ="Layer:",
+                                                                    choices = layers, 
+                                                                    selected = 1),
+                                                       width = 1, offset = 1),
                                                      column(
-                                                       imageOutput(outputId = "rgb"),
-                                                       width = 2, offset = 1),
+                                                       plotlyOutput(outputId = "plotly",
+                                                                    height = 600),
+                                                       width = 5, offset = 1),
                                                      column(
-                                                       h4("RGB"),
-                                                       includeMarkdown("descriptions/desc_rgb.Rmd"),
-                                                       width = 6, offset = 1)),
-                                                   br(),
-                                                   fluidRow(
-                                                     column(
-                                                       imageOutput(outputId = "red_band"),
-                                                       width = 2, offset = 1),
-                                                     column(
-                                                       h4("Red Band"),
-                                                       includeMarkdown("descriptions/desc_red_band.Rmd"),
-                                                       width = 6, offset = 1)),
-                                                   br(),
-                                                   fluidRow(
-                                                     column(
-                                                       imageOutput(outputId = "green_band"),
-                                                       width = 2, offset = 1),
-                                                     column(
-                                                       h4("Green Band"),
-                                                       includeMarkdown("descriptions/desc_green_band.Rmd"),
-                                                       width = 6, offset = 1)),
-                                                   br(),
-                                                   fluidRow(
-                                                     column(
-                                                       imageOutput(outputId = "blue_band"),
-                                                       width = 2, offset = 1),
-                                                     column(
-                                                       h4("Blue Band"),
-                                                       includeMarkdown("descriptions/desc_blue_band.Rmd"),
-                                                       width = 6, offset = 1)),
-                                                   br(),
-                                                   fluidRow(
-                                                     column(
-                                                       plotlyOutput(outputId = "test"),
-                                                       width = 5, offset = 1))
+                                                       uiOutput("doc_to_display"),
+                                                       width = 3, offset = 0
+                                                     ))
                                                  )
                                                )
                           )

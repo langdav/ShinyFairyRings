@@ -1,0 +1,20 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 18px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+* Rescaling image to 10 cm (from ? cm)
+* easier to train
+* faster

@@ -18,12 +18,16 @@ rm(package, packages)
 
 library(raster)
 #fr_brick <- stack("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_rgb_resamp10x10.tif")
-fr_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/input_rgb_res10x10.tif")
+#fr_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/input_rgb_res10x10.tif")
 # fr_big_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/big_stack.tif")
-fr_small_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/small_stack.tif")
-fr_selected_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/selected_variables.tif")
+#fr_small_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/small_stack.tif")
+fr_selected_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/selected_variables.grd")
 
-test_brick <- brick(paste0(getwd(), "/data/sel_var_clipped_small.tif"))
+#area_of_interest <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/data/BertRGB20130601.tif")
+
+fr_selected_small <- brick(paste0(getwd(), "/data/fr_selected_small.tif"))
+names(fr_selected_small) <- names(fr_selected_brick)
+rm(fr_selected_brick)
 
 # ## get some information
 # fr_brick
@@ -38,6 +42,13 @@ grayscale_colors <- gray.colors(100,            # number of different color leve
                                 # camera sees the world and how human eyes see it
                                 alpha = NULL)   #Null=colors are not transparent
 
+
+# ## create RGB image of whole area of interest
+# png(filename="images/aio_all.png", width = 920, height = 920)
+# par(mar = rep(0, 4), bg = NA)
+# plotRGB(area_of_interest, axes = F, colNA='transparent', bgalpha = 0)
+# dev.off()
+#
 # create RGB image
 # png(filename="images/rgb.png", width = 920, height = 920)
 # par(mar = rep(0, 4), bg = NA)
@@ -73,6 +84,7 @@ grayscale_colors <- gray.colors(100,            # number of different color leve
 # par(mar = rep(0, 4), bg = NA)
 # plot(fr_brick[[3]], axes = F, col = grayscale_colors)
 # dev.off()
+#
 # 
 # rm(fr_brick)
 # rm(fr_big_brick)
@@ -119,3 +131,12 @@ library(plotly)
 #   addRasterImage(fr_brick[[1]], colors = grayscale_colors, opacity = 0.8, maxBytes = 6 * 1024 * 1024) %>%
 #   addLegend(pal = pal, values = values(fr_brick),
 #             title = "Surface temp")
+
+
+## create list of layers for radioButtons-input
+layers <- list()
+for(i in 1:18){
+  layers[[i]] <- i
+}
+names(layers) <- names(fr_selected_small)
+
