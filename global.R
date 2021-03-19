@@ -1,6 +1,7 @@
-# load packages ###
+## load packages ###
 #------------------
-packages <- c("shiny", "shinydashboard", "shinydashboardPlus", "png", "tidyverse", "dygraphs", "leaflet", "raster", "ggplot2", "rasterVis", "plotly")
+# shinycss needed for adding loading animation
+packages <- c("shiny", "shinydashboard", "shinydashboardPlus", "png", "tidyverse", "dygraphs", "leaflet", "raster", "ggplot2", "rasterVis", "plotly", "shinycssloaders")
 for(package in packages){
   if (!require(package, character.only = TRUE)){
     install.packages(package)
@@ -9,6 +10,24 @@ for(package in packages){
 }
 rm(package, packages)
 
+## Define functions ####
+### plotting function ###
+#------------------------
+# plotting_stuff <- function(name_of_image){
+#   ima <- readPNG(paste0("images/", name_of_image, ".png"))
+#   par(mar = rep(0,4), bg = NA)
+#   plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
+#   rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
+# }
+
+plotting_stuff <- function(name_of_image, w = 600, h = 500){
+  renderPlot({
+    ima <- readPNG(paste0("images/", name_of_image, ".png"))
+    par(mar = rep(0,4), bg = NA)
+    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
+    rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
+  }, width = w, height = h)
+}
 
 # Read Data ####
 #---------------
