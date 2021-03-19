@@ -2,6 +2,10 @@ source("global.R")
 
 shinyServer(function(input, output, session) {
   
+  ## plot fairy_drake ###
+  #---------------------------
+  output$fairy_drake <- plotting_stuff("fairy_drake")
+  
   ## draw map ###
   #--------------
   output$map <- renderLeaflet({
@@ -24,38 +28,31 @@ shinyServer(function(input, output, session) {
   
   ## plot area of interest ###
   #---------------------------
-  output$area_of_interest <- renderPlot({
-    
-    ima <- readPNG("images/aoi_all.png")
-    par(mar = rep(0,4))
-    par(bg = NA)
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
-    
- }, width = 600, height = 500)
+  output$area_of_interest <- plotting_stuff("aoi_all", 750, 650)
+  
+  ## plot training area ###
+  #------------------------
+  output$training <- plotting_stuff("training_areas")
   
   ## plot rgb ###
   #--------------
-  output$aoi_to_stack <- renderPlot({
-    
-    ima <- readPNG("images/aoi_to_stack.png")
-    par(mar = rep(0,4), bg = NA)
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
-    
-  }, width = 1200, height = 500)
+  output$aoi_to_stack <- plotting_stuff("aoi_to_stack", 1200, 500)
   
-  ## plot rgb ###
-  #--------------
-  output$res_demo <- renderPlot({
-    
-    ima <- readPNG("images/res_demo.png")
-    par(mar = rep(0,4), bg = NA)
-    plot(NULL, xlim = c(0, 100), ylim = c(0, 100), bty = "n", axes = F)
-    rasterImage(ima, 0, 0, 100, 100, interpolate = TRUE)
-    
-  }, width = 1200, height = 500)
+  ## plot results of U-Net approach ###
+  #--------------------------------------
+  output$unet_res <- plotting_stuff("aoi_to_stack")
   
+  ## plot results of segOptim approach ###
+  #------------------------------------
+  output$seg_res <- plotting_stuff("aoi_to_stack")
+
+  ## plot demo ###
+  #---------------
+  output$res_demo <- plotting_stuff("res_demo", 1200, 500)
+  
+  
+  ## render plotly output ###
+  #--------------------------
   output$plotly <- renderPlotly(
     
     plotly <- ggplotly(gplot(fr_selected_small[[as.integer(input$chosen_layer)]]) + 

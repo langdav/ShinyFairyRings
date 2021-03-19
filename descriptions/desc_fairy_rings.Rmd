@@ -19,4 +19,4 @@ body{ /* Normal  */
 * Describing the area of interest
 * Describing what's the plan (detecting fairy rings with machine learning stuff)
 
-<a href="https://en.wikipedia.org/wiki/Fairy_ring" target="_blank">This is a link. If you click it, you'll get to the neverland</a>
+<a href="https://en.wikipedia.org/wiki/Fairy_ring" target="_blank">How dare you, clicking this link?!</a>
