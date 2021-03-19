@@ -71,7 +71,8 @@ shinyServer(function(input, output, session) {
                              axis.title = element_blank(),
                              axis.line = element_blank(),
                              axis.ticks = element_blank(),
-                             axis.text = element_blank()))
+                             axis.text = element_blank(),
+                             plot.margin = margin(rep(0,4), "px")))
     
   )
   

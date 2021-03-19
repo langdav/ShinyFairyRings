@@ -12,8 +12,8 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                        # menuSubItem("green band", tabName = "g", icon = icon("stream")),
                                        # menuSubItem("blue band", tabName = "b", icon = icon("stream"))
                               ),
-                              menuItem("Method 2", tabName = "method2",icon = icon("chart-line")),
-                              menuItem("Method 3", tabName = "method3",icon = icon("tree"))
+                              menuItem("Approach: SegOptim", tabName = "seg",icon = icon("object-group")),
+                              menuItem("Approach: U-Net", tabName = "unet",icon = icon("project-diagram"))
                             )
                           ),
                           
@@ -23,25 +23,27 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    tabName = "aoi",
                                                    fluidRow(
                                                      column(
+                                                       width = 10, offset = 1,
                                                        h3("Blablabl...Region of interest....blabla...S"),
                                                        br(),
-                                                       leaflet::leafletOutput("map", height = 400),
-                                                       width = 10, offset = 1)
+                                                       leaflet::leafletOutput("map", height = 400))
                                                    ),
                                                    br(),
                                                    fluidRow(
                                                      column(
-                                                       imageOutput(outputId = "area_of_interest"),
-                                                       width = 3, offset = 1),
+                                                       width = 3, offset = 1,
+                                                       imageOutput(outputId = "area_of_interest")),
                                                      column(
-                                                       includeMarkdown("descriptions/desc_area_of_int.Rmd"),
-                                                       width = 6, offset = 1)
+                                                       width = 6, offset = 1,
+                                                       includeMarkdown("descriptions/desc_area_of_int.Rmd")
+                                                     )
                                                    )
                                                  ),
                                                  tabItem(
                                                    tabName = "rgb_stack",
                                                    fluidRow(
                                                      column(
+                                                       width = 10, offset = 1,
                                                        h3("Blablabl...RGB Rasterstack"),
                                                        br(),
                                                        includeMarkdown("descriptions/desc_used_rasterstack.Rmd"),
@@ -61,22 +63,49 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        br(),
                                                        br(),
                                                        includeMarkdown("descriptions/desc_layers.Rmd"),
-                                                       br(),
-                                                       width = 10, offset = 1)),
+                                                       br()
+                                                     )
+                                                   ),
                                                    fluidRow(
                                                      column(
-                                                       radioButtons("chosen_layer", label ="Layer:",
-                                                                    choices = layers, 
-                                                                    selected = 1),
-                                                       width = 1, offset = 1),
-                                                     column(
-                                                       plotlyOutput(outputId = "plotly",
-                                                                    height = 600),
-                                                       width = 5, offset = 1),
-                                                     column(
-                                                       uiOutput("doc_to_display"),
-                                                       width = 3, offset = 0
-                                                     ))
+                                                       width = 10, offset = 1,
+                                                       boxPlus(
+                                                         width = 12,
+                                                         title = "Choose Layer",
+                                                         closable = F,
+                                                         column(
+                                                           width = 1, offset = 0,
+                                                           radioButtons("chosen_layer", label ="Layer:",
+                                                                        choices = layers, 
+                                                                        selected = 1)),
+                                                         column(
+                                                           width = 5, offset = 1,
+                                                           plotlyOutput(outputId = "plotly",
+                                                                        height = 600)
+                                                         ),
+                                                         column(
+                                                           width = 5, offset = 0,
+                                                           uiOutput("doc_to_display")
+                                                         )
+                                                       )
+                                                     )
+                                                   )
+                                                 ),
+                                                 tabItem(
+                                                   tabName = "seg",
+                                                   fluidRow(
+                                                     column(width = 10, offset = 1,
+                                                            includeMarkdown("descriptions/desc_segoptim.Rmd")
+                                                     )
+                                                   )
+                                                 ),
+                                                 tabItem(
+                                                   tabName = "unet",
+                                                   fluidRow(
+                                                     column(width = 10, offset = 1,
+                                                            includeMarkdown("descriptions/desc_unet.Rmd")
+                                                     )
+                                                   )
                                                  )
                                                )
                           )

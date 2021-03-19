@@ -1,6 +1,6 @@
 # load packages ###
 #------------------
-packages <- c("shiny", "shinydashboard", "shinydashboardPlus", "png", "tidyverse", "dygraphs", "leaflet")
+packages <- c("shiny", "shinydashboard", "shinydashboardPlus", "png", "tidyverse", "dygraphs", "leaflet", "raster", "ggplot2", "rasterVis", "plotly")
 for(package in packages){
   if (!require(package, character.only = TRUE)){
     install.packages(package)
@@ -16,7 +16,6 @@ rm(package, packages)
 ## in a stack, the bands are stores as links to the data that is stored on the computer; 
 ## in a brick, the bands are stored in the actual R object
 
-library(raster)
 #fr_brick <- stack("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_rgb_resamp10x10.tif")
 #fr_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/input_rgb_res10x10.tif")
 # fr_big_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/big_stack.tif")
@@ -25,79 +24,65 @@ fr_selected_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentatio
 
 #area_of_interest <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/data/BertRGB20130601.tif")
 
-fr_selected_small <- brick(paste0(getwd(), "/data/fr_selected_small.tif"))
-names(fr_selected_small) <- names(fr_selected_brick)
-rm(fr_selected_brick)
-
 # ## get some information
 # fr_brick
 # 
 
 # Create images of different bands ####
 #--------------------------------------
-grayscale_colors <- gray.colors(100,            # number of different color levels
-                                start = 0.0,    # how black (0) to go
-                                end = 1.0,      # how white (1) to go
-                                gamma = 2.2,    # correction between how a digital
-                                # camera sees the world and how human eyes see it
-                                alpha = NULL)   #Null=colors are not transparent
-
-
-# ## create RGB image of whole area of interest
-# png(filename="images/aio_all.png", width = 920, height = 920)
+# grayscale_colors <- gray.colors(100,            # number of different color levels
+#                                 start = 0.0,    # how black (0) to go
+#                                 end = 1.0,      # how white (1) to go
+#                                 gamma = 2.2,    # correction between how a digital
+#                                 # camera sees the world and how human eyes see it
+#                                 alpha = NULL)   #Null=colors are not transparent
+#
+#
+## create RGB image of whole area of interest
+# png(filename="images/aio_all.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plotRGB(area_of_interest, axes = F, colNA='transparent', bgalpha = 0)
 # dev.off()
-#
-# create RGB image
-# png(filename="images/rgb.png", width = 920, height = 920)
+# 
+# # create RGB image
+# png(filename="images/rgb.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plotRGB(fr_brick)
 # dev.off()
 # 
 # # create RGB image (lin-stretched; increasing contrast)
-# png(filename="images/rgb_lin.png", width = 920, height = 920)
+# png(filename="images/rgb_lin.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plotRGB(fr_brick, stretch = "lin")
 # dev.off()
 # 
 # # create RGB image (hist-stretched; increasing contrast)
-# png(filename="images/rgb_hist.png", width = 920, height = 920)
+# png(filename="images/rgb_hist.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plotRGB(fr_brick, stretch = "hist")
 # dev.off()
 # 
 # ## create grayscale image of red band
-# png(filename="images/red_band.png", width = 920, height = 920)
+# png(filename="images/red_band.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plot(fr_brick[[1]], axes = F, col = grayscale_colors)
 # dev.off()
 # 
 # ## create grayscale image of green band
-# png(filename="images/green_band.png", width = 920, height = 920)
+# png(filename="images/green_band.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plot(fr_brick[[2]], axes = F, col = grayscale_colors)
 # dev.off()
 # 
 # ## create grayscale image of blue band
-# png(filename="images/blue_band.png", width = 920, height = 920)
+# png(filename="images/blue_band.png", width = 500, height = 500)
 # par(mar = rep(0, 4), bg = NA)
 # plot(fr_brick[[3]], axes = F, col = grayscale_colors)
 # dev.off()
-#
+# 
 # 
 # rm(fr_brick)
 # rm(fr_big_brick)
-
-
-
-
-
-
-library(ggplot2)
-
-library(rasterVis)
-library(plotly)
 
 # s <- matrix(c(1, -.75, -.75, 1), ncol = 2)
 # obs <- mvtnorm::rmvnorm(500, sigma = s)
@@ -138,5 +123,9 @@ layers <- list()
 for(i in 1:18){
   layers[[i]] <- i
 }
-names(layers) <- names(fr_selected_small)
+rm(i)
 
+fr_selected_small <- brick(paste0(getwd(), "/data/fr_selected_small.tif"))
+names(fr_selected_small) <- names(fr_selected_brick)
+names(layers) <- names(fr_selected_brick)
+rm(fr_selected_brick)

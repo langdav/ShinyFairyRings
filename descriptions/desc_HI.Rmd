@@ -15,10 +15,7 @@ body{ /* Normal  */
   
 </style>
 
-Introductory description of the RGB stack. HIIIIIIIIIIIIIIIIIIIIIIIIIIIII
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
+Introductory description of the RGB stack. HIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIntroductory description of the RGB stack.Introductory description of the RGB stack.Introductory description of the RGB stack.
 Introductory description of the RGB stack.
 Introductory description of the RGB stack.
 Introductory description of the RGB stack.
