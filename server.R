@@ -28,24 +28,23 @@ shinyServer(function(input, output, session) {
   
   ## plot area of interest ###
   #---------------------------
-  output$area_of_interest <- plotting_stuff("aoi_all", 750, 650)
+  output$area_of_interest <- plotting_stuff("aoi_all", 650, 550)
+  
+  ## plot unet_architecture ###
+  #----------------------------
+  output$unet_architecture <- plotting_stuff("u-net-architecture",750, 500)
   
   ## plot training area ###
   #------------------------
   output$training <- plotting_stuff("training_areas")
   
-  ## plot rgb ###
-  #--------------
-  output$aoi_to_stack <- plotting_stuff("aoi_to_stack", 1200, 500)
+  ## plot stack overview ###
+  #-------------------------
+  output$rasterstack_demo <- plotting_stuff("stack_overview", 1600, 500)
   
   ## plot results ###
   #------------------
   output$results_all <- plotting_stuff("comparison_all",1800,450)
-
-  ## plot demo ###
-  #---------------
-  output$res_demo <- plotting_stuff("res_demo", 1200, 500)
-  
   
   ## render plotly output ###
   #--------------------------
