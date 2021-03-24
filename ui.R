@@ -12,14 +12,15 @@ shinyUI(dashboardPagePlus(skin = "blue",
                               menuItem("Approach: U-Net", tabName = "unet",icon = icon("project-diagram")),
                               menuItem("Training areas", tabName = "train", icon = icon("train")),
                               menuItem("RGB Stack", tabName = "rgb_stack",icon = icon("layer-group")),
-                              menuItem("Results", tabName = "results",icon = icon("layer-group"), startExpanded = TRUE,
-                                       menuSubItem("SegOptim", tabName = "result_seg", icon = icon("stream")),
-                                       menuSubItem("U-Net", tabName = "result_unet", icon = icon("stream"))
+                              menuItem("Results", tabName = "results",icon = icon("layer-group"), startExpanded = TRUE
+                                       #menuSubItem("SegOptim", tabName = "result_seg", icon = icon("stream")),
+                                       #menuSubItem("U-Net", tabName = "result_unet", icon = icon("stream"))
                               )
                             )
                           ),
                           
                           body = dashboardBody(id="body",
+                                               tags$head(includeCSS('www/style.css')),
                                                tabItems(
                                                  
                                                  ## Tab: Research question ###
@@ -159,29 +160,17 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                  ),
                                                  
                                                  ## Tab: Results ###
-                                                 ### Results SegOptim ###
-                                                 #-----------------------
+                                                 #------------------
                                                  tabItem(
-                                                   tabName = "result_seg",
+                                                   tabName = "results",
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,
-                                                       h2("Results of the SegOptim approach"),
-                                                       imageOutput(outputId = "seg_res",
-                                                                   inline = T) %>% withSpinner(color="#0dc5c1")
-                                                     )
-                                                   )
-                                                 ),
-                                                 
-                                                 ### Results U-Net ###
-                                                 #--------------------
-                                                 tabItem(
-                                                   tabName = "result_unet",
-                                                   fluidRow(
+                                                       h2("Results of the SegOptim approach")
+                                                     ),
                                                      column(
-                                                       width = 10, offset = 1,
-                                                       h2("Results of the U-Net approach"),
-                                                       imageOutput(outputId = "unet_res",
+                                                       width = 12, offset = 0,
+                                                       imageOutput(outputId = "results_all",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1")
                                                      )
                                                    )
