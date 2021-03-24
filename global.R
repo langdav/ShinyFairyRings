@@ -40,7 +40,6 @@ plotting_stuff <- function(name_of_image, w = 600, h = 500){
 # fr_big_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/big_stack.tif")
 #fr_small_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/small_stack.tif")
 fr_selected_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/selected_variables.grd")
-
 #area_of_interest <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/data/BertRGB20130601.tif")
 
 # ## get some information
