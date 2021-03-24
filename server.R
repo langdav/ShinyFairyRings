@@ -38,13 +38,9 @@ shinyServer(function(input, output, session) {
   #--------------
   output$aoi_to_stack <- plotting_stuff("aoi_to_stack", 1200, 500)
   
-  ## plot results of U-Net approach ###
-  #--------------------------------------
-  output$unet_res <- plotting_stuff("aoi_to_stack")
-  
-  ## plot results of segOptim approach ###
-  #------------------------------------
-  output$seg_res <- plotting_stuff("aoi_to_stack")
+  ## plot results ###
+  #------------------
+  output$results_all <- plotting_stuff("comparison_all",1800,450)
 
   ## plot demo ###
   #---------------
