@@ -15,13 +15,4 @@ body{ /* Normal  */
   
 </style>
 
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
+The R package <a href="https://segoptim.bitbucket.io/docs/" target="_blank">*SegOptim*</a> performs an Object-based Image Analysis (OBIA). In contrast to pixel-based approacches, which depend on information derived from each individual pixel of a digital image, OBIA is based on information of a *set of pixels*, so called 'objects' (Burnett and Blaschke, 2003). The sets of pixels, which are treated as an object, are characterized by similiar or relatively homogeneous and spatially connected spectral or other characteristic and can be of different shapes, sizes, scales or even temporal properties.

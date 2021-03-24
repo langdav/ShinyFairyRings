@@ -15,13 +15,5 @@ body{ /* Normal  */
   
 </style>
 
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
+
+U-Net is U-Net is a convolutional neural network, developed for biomedical image segmentation at the Computer Science Department of the University of Freiburg (Ronnenberger et al., 2015). The network consists of a contracting and an expansive path, giving it the u-shape. The contracting (downward) path is a convolutional network, consisting of repeated application of convolutions, each followed by a rectified linear unit (ReLU) and a max pooling operation. Here, spatial information is reduced while feature information is increased. On the expansive (upward) pathway, feature and spatial information are combined through a sequence of up-convolutions and concatenations with high-resolution features from the contracting path. For a more comprehensive explanation of how the algorithm workds, have a look into the video on the right.

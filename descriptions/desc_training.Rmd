@@ -15,13 +15,5 @@ body{ /* Normal  */
   
 </style>
 
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
-Introductory description of the RGB stack.
+Similar to a student before attending an examination, a machine learning algorithm needs training. For a classification algorithm like ours, these training data are rasters which contain information about which rastercells (or pixels on the image) contain the structure we're looking for (in this case a Fairy Ring) and which not. Fairy Ring = 1, not Fairy Ring = 0. This is done by hand and in the image on the right you can see the result of it: several small training areas, the black lines containing the information "1", meaning "the cells at this position contain a Fairy Ring". Everything that is white contains a "0" and, thus, the information "no Fairy ring here". This means, there can be anything at this position, meadow, a tree, a unicorn, just no Fairy Ring. But as the algorithm is just asked to predict where on an image we can see a Fairy Ring, it is not important what anyting else is and what exactly lies beneath "not Fairy Ring".
+In the next steps, these training data, together with a bunch of other layers containing numerous spectral or other characteristics of each pixel (U-Net) or object (SegOptim), are fed to the algorithms to train them. In the end, it will predict "Fairy Ring" and "not Fairy Ring" for the rest of the image.

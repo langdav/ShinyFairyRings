@@ -8,14 +8,13 @@ shinyUI(dashboardPagePlus(skin = "blue",
                           sidebar = dashboardSidebar(
                             sidebarMenu(
                               menuItem("Research question", tabName = "rq",icon = icon("microscope")),
-                              menuItem("Approach: SegOptim", tabName = "seg",icon = icon("object-group")),
-                              menuItem("Approach: U-Net", tabName = "unet",icon = icon("project-diagram")),
-                              menuItem("Training areas", tabName = "train", icon = icon("train")),
-                              menuItem("RGB Stack", tabName = "rgb_stack",icon = icon("layer-group")),
-                              menuItem("Results", tabName = "results",icon = icon("layer-group"), startExpanded = TRUE
-                                       #menuSubItem("SegOptim", tabName = "result_seg", icon = icon("stream")),
-                                       #menuSubItem("U-Net", tabName = "result_unet", icon = icon("stream"))
-                              )
+                              menuItem("Methods", tabName = "methods", icon = icon("microscope"), startExpanded = FALSE,
+                                       menuSubItem("Approach: SegOptim", tabName = "seg",icon = icon("object-group")),
+                                       menuSubItem("Approach: U-Net", tabName = "unet",icon = icon("project-diagram"))),
+                              menuItem("Data", tabName = "methods", icon = icon("microscope"), startExpanded = FALSE,
+                                       menuSubItem("Training areas", tabName = "train", icon = icon("train")),
+                                       menuSubItem("Rasterstack", tabName = "rasterstack",icon = icon("layer-group"))),
+                              menuItem("Results", tabName = "results",icon = icon("university"))
                             )
                           ),
                           
@@ -49,18 +48,19 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                      ),
                                                      column(
                                                        width = 10, offset = 1,
-                                                       leaflet::leafletOutput("map", height = 400) %>% withSpinner(color="#0dc5c1"))
+                                                       leaflet::leafletOutput("map", height = 500) %>% withSpinner(color="#0dc5c1"))
                                                    ),
                                                    br(),
                                                    fluidRow(
                                                      column(
-                                                       width = 5, offset = 1,
-                                                       includeMarkdown("descriptions/desc_area_of_int.Rmd")
-                                                     ),
-                                                     column(
-                                                       width = 4, offset = 0,
+                                                       width = 4, offset = 1,
                                                        imageOutput(outputId = "area_of_interest",
-                                                                   inline = T) %>% withSpinner(color="#0dc5c1"))
+                                                                   inline = T) %>% withSpinner(color="#0dc5c1")),
+                                                     column(
+                                                       width = 5, offset = 1,
+                                                       br(),
+                                                       includeMarkdown("descriptions/desc_area_of_int.Rmd")
+                                                     )
                                                    )
                                                  ),
                                                  
@@ -81,10 +81,22 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                  tabItem(
                                                    tabName = "unet",
                                                    fluidRow(
-                                                     column(width = 10, offset = 1,
+                                                     column(width = 4, offset = 1,
                                                             h2("U-Net - a convolutional neural network"),
                                                             includeMarkdown("descriptions/desc_unet.Rmd")
+                                                     ),
+                                                     column(width = 5, offset = 1,
+                                                            imageOutput(outputId = "unet_architecture",
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1")
                                                      )
+                                                   ),
+                                                   fluidRow(
+                                                     column(width = 4, offset = 6,
+                                                            tags$iframe(width="750", height="500", 
+                                                                        src="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/u-net-teaser.mp4", 
+                                                                        frameborder="0", 
+                                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", 
+                                                                        allowfullscreen=NA))
                                                    )
                                                  ),
                                                  
@@ -94,7 +106,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    tabName = "train",
                                                    fluidRow(
                                                      column(width = 10, offset = 1,
-                                                            h2("Training areas")
+                                                            h2("Input data - Training areas")
                                                      )
                                                    ),
                                                    
@@ -112,23 +124,16 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                  ## Tab: RGB Stack ###
                                                  #--------------------
                                                  tabItem(
-                                                   tabName = "rgb_stack",
+                                                   tabName = "rasterstack",
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,
-                                                       h3("Blablabl...RGB Rasterstack"),
+                                                       h3("Input data - Rasterstack"),
+                                                       imageOutput(outputId = "rasterstack_demo",
+                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                       h5("The original image was (left) was reduced to the extend of the image in the middle and resampled to a resolution of 10x10cm"),
+                                                       br(),
                                                        includeMarkdown("descriptions/desc_used_rasterstack.Rmd"),
-                                                       br(),
-                                                       imageOutput(outputId = "aoi_to_stack",
-                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                       br(),
-                                                       includeMarkdown("descriptions/desc_rescaling.Rmd"),
-                                                       br(),
-                                                       imageOutput(outputId = "res_demo",
-                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                       br(),
-                                                       includeMarkdown("descriptions/desc_layers.Rmd"),
-                                                       br()
                                                      )
                                                    ),
                                                    
@@ -166,7 +171,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,
-                                                       h2("Results of the SegOptim approach")
+                                                       h2("Results")
                                                      ),
                                                      column(
                                                        width = 12, offset = 0,

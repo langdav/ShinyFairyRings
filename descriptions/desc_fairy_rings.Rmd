@@ -15,8 +15,10 @@ body{ /* Normal  */
   
 </style>
 
-* Describing fairy rings here. Some text. Some Links. An Image. etc...
-* Describing the area of interest
-* Describing what's the plan (detecting fairy rings with machine learning stuff)
+Fairy Rings, despite their magical names, are not subject of any high fantasy novel taking place in a mystical place. On the contrary, they are just an interesting realy world phenomenon that inspired numerous folklore, including witches, dragons and, obviously, fairies. The (lower) image on the left represents a fairy ring: a ring of mushrooms. Found mainly in forested areas, but also appearing in grass- or rangelands, those rings can grow to more than 10m in diameter. Though the reasons for their circular appearance and their genesis are certainly interesting, they are not subject of this project. The very curious minds, mycology maniacs and fungus fanatics are welcome to follow <a href="https://en.wikipedia.org/wiki/Fairy_ring" target="_blank">this link to Wikipedia</a> and learn more about fairy rings and the strange stuff relating them, people made up over centuries. In the meantime, I will progress with the real subject of this project: using machine learning to automatically detect fairy rings in grasslands. "Well, sounds pretty easy, mate! Even my grandma would find those freaking toadstool torus on a field!", you might think. After wondering why anyone would say "torus" instead of "ring" and assuring you, that those novel computers will never repalce your grandmother (and not referencing "The Matrix"), I would proceed with explaining you, that a computer is lacking some essential skills that help your grandmother to distinguish between "meadow" and "mushroom ring": experience ("I know what grassland looks like") combined with seeing multiple interrelations at once ("This is a circular shape, which looks strange, AND it has another color that the surrounding meadow") for example, just to name a few. So, you see, letting a PC automatically detect certain structures is not an easy task, even if it seems easy from a human perspective.
+Bulding upon this, the idea behind this project is, to present two different machine learning approaches in predicting Fairy Rings:
 
-<a href="https://en.wikipedia.org/wiki/Fairy_ring" target="_blank">How dare you, clicking this link?!</a>
+1. U-Net - a convolutional neural network
+2. SegOptim - object-based image classification
+
+On the next few pages we will lead you through the process of model training, prediction and validation and will present you the results. But first, let's start with the area of interest, where we want to detect our Fairy Rings.

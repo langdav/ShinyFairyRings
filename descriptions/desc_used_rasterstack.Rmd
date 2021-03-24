@@ -15,6 +15,8 @@ body{ /* Normal  */
   
 </style>
 
-* Taking only a part from the extent
-* use this part for training a model
-* the stuff can then be applied to the whole area
+In "Research question" we presented you the area of interest for which we want to train our model(s). However, as training the algorithms is resource- and time-intensive, we decided to limit the area used for training to the extend you can see above. Moreover, the original image was shot by a drone flying relatively low and, therefore, has a rather high resolution of 1cm per pixel. As this high resolution was not important for the given task and to further reduce resource-intensity, we resampled the image to a 10cm resolution, using a mean value interpolation method (IS THIS TRUE?!).
+
+* image consists of 3 layers: R, G, B; each of them values from 0-255
+* used R package from Reudenbach to get all the other layers
+* used IDONTKNOW to reduce layers to important ones
