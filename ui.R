@@ -69,9 +69,13 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                  tabItem(
                                                    tabName = "seg",
                                                    fluidRow(
-                                                     column(width = 10, offset = 1,
+                                                     column(width = 6, offset = 1,
                                                             h2("SegOptim - object based image classification"),
                                                             includeMarkdown("descriptions/desc_segoptim.Rmd")
+                                                     ),
+                                                     column(width = 3, offset = 0,
+                                                            imageOutput(outputId = "segopt_scheme",
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1")
                                                      )
                                                    )
                                                  ),
@@ -86,17 +90,24 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                             includeMarkdown("descriptions/desc_unet.Rmd")
                                                      ),
                                                      column(width = 5, offset = 1,
-                                                            imageOutput(outputId = "unet_architecture",
-                                                                        inline = T) %>% withSpinner(color="#0dc5c1")
+                                                            imageOutput(outputId = "unet_example",
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                            h5("Examples of Image Augmentation")
                                                      )
                                                    ),
                                                    fluidRow(
-                                                     column(width = 4, offset = 6,
-                                                            tags$iframe(width="750", height="500", 
-                                                                        src="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/u-net-teaser.mp4", 
-                                                                        frameborder="0", 
-                                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", 
-                                                                        allowfullscreen=NA))
+                                                     br(),
+                                                     column(width = 5, offset = 1,
+                                                            tags$iframe(width="750", height="500",
+                                                                        src="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/u-net-teaser.mp4",
+                                                                        frameborder="0",
+                                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+                                                                        allowfullscreen=NA)
+                                                     ),
+                                                     column(width = 5, offset = 0,
+                                                            imageOutput(outputId = "unet_architecture",
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1")
+                                                     )
                                                    )
                                                  ),
                                                  
@@ -132,9 +143,13 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        imageOutput(outputId = "rasterstack_demo",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),
                                                        h5("The original image was (left) was reduced to the extend of the image in the middle and resampled to a resolution of 10x10cm"),
-                                                       br(),
-                                                       includeMarkdown("descriptions/desc_used_rasterstack.Rmd"),
-                                                     )
+                                                       br())),
+                                                   fluidRow(
+                                                     column(
+                                                       width = 8, offset = 2,
+                                                       includeMarkdown("descriptions/desc_used_rasterstack.Rmd")
+                                                     ),
+                                                     br()
                                                    ),
                                                    
                                                    fluidRow(
@@ -151,12 +166,13 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                                         choices = layers, 
                                                                         selected = 1)),
                                                          column(
-                                                           width = 5, offset = 1,
-                                                           plotlyOutput(outputId = "plotly",
+                                                           width = 7, offset = 1,
+                                                           plotlyOutput(outputId = "plotly_stack",
                                                                         height = 600) %>% withSpinner(color="#0dc5c1")
+                                                           #shinyWidgetOutput("test") %>% withSpinner(color="#0dc5c1")
                                                          ),
                                                          column(
-                                                           width = 5, offset = 0,
+                                                           width = 3, offset = 0,
                                                            uiOutput("doc_to_display") %>% withSpinner(color="#0dc5c1")
                                                          )
                                                        )
@@ -177,6 +193,39 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        width = 12, offset = 0,
                                                        imageOutput(outputId = "results_all",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1")
+                                                     ),
+                                                     column(width = 9, offset = 2,
+                                                            h5("Results of U-Net (left), SegOptim wight RGB-Stack (middle-left), SegOptim with large Stack (middle-right) and an RGB image with
+                                   linear-stretched values for visibility of the Fairy Rings (right).")
+                                                     )
+                                                   ),
+                                                   
+                                                   fluidRow(
+                                                     column(
+                                                       width = 8, offset = 2,
+                                                       includeMarkdown("descriptions/desc_results.Rmd")
+                                                     )
+                                                   ),
+                                                   
+                                                   fluidRow(
+                                                     column(
+                                                       width = 10, offset = 1,
+                                                       boxPlus(
+                                                         width = 12,
+                                                         title = "Choose Method",
+                                                         closable = F,
+                                                         status = "primary",
+                                                         column(
+                                                           width = 1, offset = 0,
+                                                           radioButtons("chosen_result", label ="Result:",
+                                                                        choices = results_list, 
+                                                                        selected = 1)),
+                                                         column(
+                                                           width = 9, offset = 1,
+                                                           plotlyOutput(outputId = "plotly_result",
+                                                                        height = 1200) %>% withSpinner(color="#0dc5c1")
+                                                         )
+                                                       )
                                                      )
                                                    )
                                                  )

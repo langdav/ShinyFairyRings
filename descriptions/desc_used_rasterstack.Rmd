@@ -8,15 +8,18 @@ output: html_document
 <style type="text/css">
 
 body{ /* Normal  */
-      font-size: 18px;
+      font-size: 20px;
       font-family: "Times New Roman", Times, serif;
       color: Black;
   }
   
 </style>
 
-In "Research question" we presented you the area of interest for which we want to train our model(s). However, as training the algorithms is resource- and time-intensive, we decided to limit the area used for training to the extend you can see above. Moreover, the original image was shot by a drone flying relatively low and, therefore, has a rather high resolution of 1cm per pixel. As this high resolution was not important for the given task and to further reduce resource-intensity, we resampled the image to a 10cm resolution, using a mean value interpolation method (IS THIS TRUE?!).
+In "Research question" we presented you the area of interest for which we want to train our model(s) and detect all those Fairy Rings. However, as training the algorithms is resource- and time-intensive, we decided to limit the area used for training to the extend you can see above. Moreover, the original image was shot by a drone flying relatively low and, therefore, has a rather high resolution of 1cm per pixel. As this high resolution is not crucial for the given task and to further reduce resource-intensity, we resampled the image to a 10cm resolution, using a mean value interpolation method (IS THIS TRUE?!). 
 
-* image consists of 3 layers: R, G, B; each of them values from 0-255
-* used R package from Reudenbach to get all the other layers
-* used IDONTKNOW to reduce layers to important ones
+Now, the image we're using is a RGB-image, meaning it consists of 3 seperate layers: **R**ed, **G**reen and **B**lue. Each of those layers has a value range of 256; the intensity of the particular color ranges from 0 (= transparent) to 255 (strong red/green/blue). Then, all 3 layers stacked one over another result in the coloured image as you're seeing it.  
+
+The *U-Net* method is satisfied with those 3 layers and, apart from the training areas, did not need any additional spectral or other information. *SegOptim*, on the other hand, is likely to show better results when it it's fed with additional data. Hence, additional layers were calculated based on the 3 RGB-layers, using the R package *uavRst*'s (**CITE**) function *calc_ext*. We started by calculating the function's preset channels and then, following <a href="https://geomoer.github.io/moer-mpg-remote-sensing//unit05/unit04-07_spatial_trainingdata.html#some-aspects-of-reducing-predictors" target="_blank">this tutorial</a>, reduced the number of channels by checking the layer for intercorrelations and removing those containing too similar information. This resulted in in a 17 layer raster stack.  
+
+In the little tool below you can click through the different layers of the stack and get a short explanation of the particular channel. Also, the small image in the middel shows a visualization of the channel in a white-to-black color grade. The darker a particular pixel is, the bigger it value is within the particular channels value range. By hovering over different pixels with your coursor, you can see their particular values. The tools also allows for zooming in, if you want a bigger picture of a specific area.  
+**Note**: the image is not representing the whole area of the stack (as this would have led to a very long rendering time for the tool), but only the section that is displayed by the zoomed-in part in the image at the top of this page.

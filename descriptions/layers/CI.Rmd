@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 18px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+* Coloration Index
+* Formula: (red - blue) / red
+* Value Range (within whole layer): 0.08 -- 0.64 
+

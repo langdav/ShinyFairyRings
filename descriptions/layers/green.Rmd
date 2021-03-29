@@ -1,0 +1,20 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 18px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+* standard green channel of an RGB image.
+* Formula: none
+* Value Range (within whole layer): 0 -- 255.

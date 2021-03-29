@@ -136,7 +136,7 @@ fr_selected_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentatio
 #             title = "Surface temp")
 
 
-## create list of layers for radioButtons-input
+## create list of layers for radioButtons-input for plotly_brick
 layers <- list()
 for(i in 1:18){
   layers[[i]] <- i
@@ -146,4 +146,59 @@ rm(i)
 fr_selected_small <- brick(paste0(getwd(), "/data/fr_selected_small.tif"))
 names(fr_selected_small) <- names(fr_selected_brick)
 names(layers) <- names(fr_selected_brick)
-rm(fr_selected_brick)
+#rm(fr_selected_brick)
+
+## create list of layers for radioButtons-input for plotly_results
+results_list <- list("U-Net" = 1,
+                     "SegOptim_RGB" = 2,
+                     "SegOptim_Full_Stack" = 3)
+
+# for(i in names(fr_selected_brick)){
+#   p <- ggplotly(gplot(fr_selected_brick[[i]]) +
+#                   geom_tile(aes(fill = value)) +
+#                   scale_fill_gradient(low = 'white', high = 'black') +
+#                   coord_equal() +
+#                   theme_bw() +
+#                   theme(rect = element_rect(fill = "transparent"),
+#                         panel.background = element_rect(fill = "transparent"),
+#                         panel.border = element_blank(),
+#                         panel.grid.major = element_blank(),
+#                         panel.grid.minor = element_blank(),
+#                         axis.title = element_blank(),
+#                         axis.line = element_blank(),
+#                         axis.ticks = element_blank(),
+#                         axis.text = element_blank(),
+#                         plot.margin = margin(rep(0,4), "px")),
+#                 tooltip = "value")
+#   saveRDS(p, paste0("data/plotly/", i, ".rds"))
+# }
+
+
+# result_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/out_unet.tif")
+# 
+# values(result_brick)[values(result_brick) == 0] = 1
+# values(result_brick)[is.na(values(result_brick))] = 0
+# 
+# p <- ggplotly(gplot(result_brick) +
+#                 geom_tile(aes(fill = value)) +
+#                 scale_fill_gradient(low = 'white', high = "black") +
+#                 coord_equal() +
+#                 theme_bw() +
+#                 theme(rect = element_rect(fill = "transparent"),
+#                       panel.background = element_rect(fill = "transparent"),
+#                       panel.border = element_blank(),
+#                       panel.grid.major = element_blank(),
+#                       panel.grid.minor = element_blank(),
+#                       axis.title = element_blank(),
+#                       axis.line = element_blank(),
+#                       axis.ticks = element_blank(),
+#                       axis.text = element_blank(),
+#                       plot.margin = margin(rep(0,4), "px"),
+#                       legend.position = "none"),
+#               tooltip = "value")
+# 
+# saveRDS(p, paste0("data/plotly/", "U-Net", ".rds"))
+
+
+
+  

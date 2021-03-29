@@ -8,11 +8,12 @@ output: html_document
 <style type="text/css">
 
 body{ /* Normal  */
-      font-size: 18px;
+      font-size: 20♦px;
       font-family: "Times New Roman", Times, serif;
       color: Black;
   }
   
 </style>
 
-The R package <a href="https://segoptim.bitbucket.io/docs/" target="_blank">*SegOptim*</a> performs an Object-based Image Analysis (OBIA). In contrast to pixel-based approacches, which depend on information derived from each individual pixel of a digital image, OBIA is based on information of a *set of pixels*, so called 'objects' (Burnett and Blaschke, 2003). The sets of pixels, which are treated as an object, are characterized by similiar or relatively homogeneous and spatially connected spectral or other characteristic and can be of different shapes, sizes, scales or even temporal properties.
+SegOptim is a R package that can be used for object-based image analysis. Here, we used it to separate the Fairy Rings from their neighborhood. For more detailed information on the package, it is worth having a look at <a href="https://segoptim.bitbucket.io/docs/" target="_blank">SegOptim's bitbucket page</a>, which also contains a tutorial on how it works, as well as the corresponding paper <a href="https://www.sciencedirect.com/science/article/abs/pii/S0303243418303556" target="_blank">corresponding paper</a> (Goncalves et al., 2019).  
+SegOptim combines a variety of segmentation and classification algorithms that can be addressed in R. The advantage compared to a simple pixel-based classification is the ability to classify spatially connected objects with similar spectral properties. The workflow first includes segmentation of the RGB image by external software (offered are Mean-Shift, Region Growing, Large-scale Mean-Shift, Shepard's k-means, Seeded Region Growing & Baatz-Schape Multi-resolution segmentation and Mean Region Growing). We chose large-scale mean-shift segmentation using the Orfeo Toolbox, which performs mean-shift segmentation and adds all segments below a threshold to a similar neighboring object (for more information, have a look at the corresponding <a href="https://www.orfeo-toolbox.org/" target="_blank">Orfeo Toolbox page</a>. Our segments were classified using the supervised classification algorithm Random Forest, however, SegOptim supports a number of other supervised and even some unsupervised classification algorithms.

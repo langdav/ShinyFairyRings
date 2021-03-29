@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 18px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+* Triangular greenness index
+* Formula: -0.5[190(R670-R550)-120(R670 - R480)]
+* Value Range (within whole layer): 692.6 -- 5697.8
+* Features: estimates chlorophyll concentration in leaves and canopies

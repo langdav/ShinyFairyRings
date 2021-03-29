@@ -1,0 +1,33 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+Looking at the pictures above, you can see three results compared to the RGB-picture on the far right (which is linear-stretched, as this leads to a better visibility of the Fairy Rings). *Why three results when we used two different algorithms?* Well, that's because we trained *two* different SegOptim models, one with the 18-layer-stack, the other one with just the RGB-stack. The RGB-one was made for more in-depth comparison to the U-Net model, as the U-Net algorithm did also just use the three RGB-layers. So, comparing those two models' results it is unambiguous that U-Net (far left) did an undisputedly better job than SegOptim (middle-left), when solely relying on the RGB-layers. On the other hand, comparing the U-Net result with those of the SegOptim trained with the large stack, it remains less clear. Looking at both images reveals, that U-Net delivered cleaner structures, whereas the SegOptim algorithm created a noisier image with a lot of small points, classified as Fairy Ring, which do not seem to really belong to a larger Fairy Ring structure. On the other hand, U-Net is missing some structures, that where classified as Fairy Ring by SegOptim and that seem to belong to a Fairy Ring, when comparing it to the RGB-image.
+
+This assumption is strengthened when looking into the models' accuracies:  
+U-Net: 0.78, SegOptim (full stack): 0.8, SegOptim (RGB stack): 0.85  
+While it seems a bit odd in the first place, that the highest accuracy was achieved by SegOptim using the RGB stack, it gets clear when thinking of it in detail: the algorithm did predict only a few pixels as Fairy Ring, making it less likely to make False-Positive-mistakes here. More mistakes were made by False-Negative prediction, marking Fairy Rings as *non Fairy Ring*. But as, in the end, the Fairy Rings make up the smaller part of the picture, these mistakes do not have that much of an impact onto the accuracy.  
+Comparing the accuracies of U-Net (0.78) and SegOptim with full stack (0.8), on the other hand, is a little more challenging. As it is already apparent in the images above, U-Nets predictions were sharper whilst SegOptim was a little more generous in predicting the presence of *Fairy Ring*. This clearly led to a higher amount of False-Positives (as you can see in the table) but, obviously, also to less False-Negatives (again, have a look into the table) and, subsequently, to a higher accuracy.  
+At this point, it needs to be stated that, having a look onto the validation raster to the right, SegOptim might have benefited from the area we chose for validation. Here, it did a pretty good job. But having a look onto other areas like the one in the lower left corner of the RGB-image, one might get the idea that SegOptim did not perform that well here, as it predicted a lot of *Fairy Ring* although, by looking at it with the help of the **God's view method** (**CITE REUDENBACH**), it can occur to one that there aren't that many Fairy Rings.
+
+So, taking everything into consideration, which one do we believe to be the better method for predicting Fairy Rings in an area like our *spanish mountain meadow*? Well, as so often, this mainly depends on your data, your usecase and your computational ressources. If your aim is to detect any possible presence of a Fairy Ring on a given area and you don't mind the algorithm being time-consuming and hardware-intensive, then you might be pleased with *SegOptim*. On the other hand, when you prefer the method being faster, less hardware-hungry, do not want to put much effort or thought into the layers you need to feed the algorithm, *U-Net* might be the better option. Also, *U-Net* provided the 'prettier' result, as the Fairy Rings were sharp and clearly differentiated from the surroundings. However, it was a little less accurate and might have overlooked some Fairy Rings or parts of those.  
+As you can see from the results and as I mentioned in the beginning, detecting Fairy Rings computationally is not an easy task, even though it might seem quite simple based on how easy it is for us to detect them on a picture. In the end, what the great Dumbeldore said to Harry holds true: *Don’t count your owls before they are delivered.*
+
+
+
+
+
+
