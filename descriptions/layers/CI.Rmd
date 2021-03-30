@@ -15,7 +15,4 @@ body{ /* Normal  */
   
 </style>
 
-* Coloration Index
-* Formula: (red - blue) / red
-* Value Range (within whole layer): 0.08 -- 0.64 
-
+* RGB-Index

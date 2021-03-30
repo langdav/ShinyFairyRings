@@ -15,6 +15,8 @@ body{ /* Normal  */
   
 </style>
 
-* Primary colours Hue Index
-* Formula: (2*R-G-B)/(G-B)
-* Value Range (within whole layer): 0 -- 1
+* Haralick Texture
+* Texture uniformity
+* „Energy“ is significantly affected by frequent changes between high and low values. „Noisy“ rasters would have very hight energy.
+
+(Haralick et al., 1973)

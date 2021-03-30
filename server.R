@@ -32,7 +32,7 @@ shinyServer(function(input, output, session) {
   
   ## plot segopt_scheme ###
   #----------------------------
-  output$segopt_scheme <- plotting_stuff("segopt_scheme", 600, 1000)
+  output$segopt_scheme <- plotting_stuff("segopt_scheme", 500, 800)
   
   ## plot unet_architecture & example###
   #-------------------------------------
@@ -41,53 +41,28 @@ shinyServer(function(input, output, session) {
   
   ## plot training area ###
   #------------------------
-  output$training <- plotting_stuff("training_areas")
+  output$training <- plotting_stuff("training_areas", 600, 600)
   
-  ## plot stack overview ###
-  #-------------------------
+  ## plot stack overview $ plotly_stack output + markdown, that is describing the chosen layer###
+  #----------------------------------------------------------------------------------------------
   output$rasterstack_demo <- plotting_stuff("stack_overview", 1600, 500)
   
-  ## plot results ###
-  #------------------
-  output$results_all <- plotting_stuff("comparison_all",1800,450)
-  
-  ## render plotly_stack output ###
-  #--------------------------------
   output$plotly_stack <- renderPlotly(
-    
-    # plotly <- ggplotly(gplot(fr_selected_small[[as.integer(input$chosen_layer)]]) +
-    #                      geom_tile(aes(fill = value)) +
-    #                      scale_fill_gradient(low = 'white', high = 'black') +
-    #                      coord_equal() +
-    #                      theme_bw() +
-    #                      theme(rect = element_rect(fill = "transparent"),
-    #                            panel.background = element_rect(fill = "transparent"),
-    #                            panel.border = element_blank(),
-    #                            panel.grid.major = element_blank(),
-    #                            panel.grid.minor = element_blank(),
-    #                            axis.title = element_blank(),
-    #                            axis.line = element_blank(),
-    #                            axis.ticks = element_blank(),
-    #                            axis.text = element_blank(),
-    #                            plot.margin = margin(rep(0,4), "px")),
-    #                    tooltip = "value")
     plotly_stack <- readRDS(paste0("data/plotly/", names(fr_selected_brick)[as.integer(input$chosen_layer)], ".rds"))
-    
   )
   
-  ## include markdown, that is describing the current layer ###
-  #------------------------------------------------------------
   output$doc_to_display <- renderUI({
     layer_description <- paste0("descriptions/layers/", names(fr_selected_small)[as.integer(input$chosen_layer)], ".Rmd")
     includeMarkdown(layer_description)
   })
   
-  ## render plotly_result output ###
-  #--------------------------------
+  ## plot results & validation & render plotly_result output###
+  #------------------------------------------------------------
+  output$results_all <- plotting_stuff("comparison_all",1800,450)
+  output$validation <- plotting_stuff("validation", 500)
+  
   output$plotly_result <- renderPlotly(
-    
     plotly_result <- readRDS(paste0("data/plotly/", names(results_list)[as.integer(input$chosen_result)], ".rds"))
-    
   )
 }
 )

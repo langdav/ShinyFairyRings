@@ -45,22 +45,22 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                      column(
                                                        width = 6, offset = 1,
                                                        h2("Area of interest")
-                                                     ),
-                                                     column(
-                                                       width = 10, offset = 1,
-                                                       leaflet::leafletOutput("map", height = 500) %>% withSpinner(color="#0dc5c1"))
+                                                     )
                                                    ),
-                                                   br(),
                                                    fluidRow(
                                                      column(
-                                                       width = 4, offset = 1,
-                                                       imageOutput(outputId = "area_of_interest",
-                                                                   inline = T) %>% withSpinner(color="#0dc5c1")),
-                                                     column(
                                                        width = 5, offset = 1,
-                                                       br(),
-                                                       includeMarkdown("descriptions/desc_area_of_int.Rmd")
-                                                     )
+                                                       fluidRow(
+                                                         includeMarkdown("descriptions/desc_area_of_int.Rmd")
+                                                       ),
+                                                       fluidRow(
+                                                         imageOutput(outputId = "area_of_interest",
+                                                                     inline = T) %>% withSpinner(color="#0dc5c1")
+                                                       )
+                                                     ),
+                                                     column(
+                                                       width = 5, offset = 0,
+                                                       leaflet::leafletOutput("map", height = 700) %>% withSpinner(color="#0dc5c1"))
                                                    )
                                                  ),
                                                  
@@ -142,7 +142,8 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        h3("Input data - Rasterstack"),
                                                        imageOutput(outputId = "rasterstack_demo",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                       h5("The original image was (left) was reduced to the extend of the image in the middle and resampled to a resolution of 10x10cm"),
+                                                       h5("The original image was (left) was reduced to the extend of the image 
+                                                          in the middle and resampled to a resolution of 10x10cm"),
                                                        br())),
                                                    fluidRow(
                                                      column(
@@ -166,13 +167,13 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                                         choices = layers, 
                                                                         selected = 1)),
                                                          column(
-                                                           width = 7, offset = 1,
+                                                           width = 8, offset = 1,
                                                            plotlyOutput(outputId = "plotly_stack",
-                                                                        height = 600) %>% withSpinner(color="#0dc5c1")
+                                                                        height = 900) %>% withSpinner(color="#0dc5c1")
                                                            #shinyWidgetOutput("test") %>% withSpinner(color="#0dc5c1")
                                                          ),
                                                          column(
-                                                           width = 3, offset = 0,
+                                                           width = 2, offset = 0,
                                                            uiOutput("doc_to_display") %>% withSpinner(color="#0dc5c1")
                                                          )
                                                        )
@@ -195,15 +196,22 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1")
                                                      ),
                                                      column(width = 9, offset = 2,
-                                                            h5("Results of U-Net (left), SegOptim wight RGB-Stack (middle-left), SegOptim with large Stack (middle-right) and an RGB image with
-                                   linear-stretched values for visibility of the Fairy Rings (right).")
+                                                            h5("Results of U-Net (left), SegOptim wight RGB-Stack (middle-left), 
+                                                               SegOptim with large Stack (middle-right) and an RGB image with 
+                                                               linear-stretched values for visibility of the Fairy Rings (right).")
                                                      )
                                                    ),
                                                    
                                                    fluidRow(
                                                      column(
-                                                       width = 8, offset = 2,
+                                                       width = 7, offset = 1,
                                                        includeMarkdown("descriptions/desc_results.Rmd")
+                                                     ),
+                                                     column(
+                                                       width = 3, offset = 0,
+                                                       imageOutput(outputId = "validation",
+                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                       h5("Validation")
                                                      )
                                                    ),
                                                    
@@ -212,7 +220,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        width = 10, offset = 1,
                                                        boxPlus(
                                                          width = 12,
-                                                         title = "Choose Method",
+                                                         title = NULL,
                                                          closable = F,
                                                          status = "primary",
                                                          column(
@@ -223,7 +231,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                          column(
                                                            width = 9, offset = 1,
                                                            plotlyOutput(outputId = "plotly_result",
-                                                                        height = 1200) %>% withSpinner(color="#0dc5c1")
+                                                                        height = 1000) %>% withSpinner(color="#0dc5c1")
                                                          )
                                                        )
                                                      )

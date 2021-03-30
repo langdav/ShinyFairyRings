@@ -15,9 +15,4 @@ body{ /* Normal  */
   
 </style>
 
-* Primary colours Hue Index
-* Formula: (2*R-G-B)/(G-B)
-* Value Range (within whole layer): -0.09 -- 2.81 
-
-fr_selected_small[[2]]@data@min
-fr_selected_small[[2]]@data@max
+* NA

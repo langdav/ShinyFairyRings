@@ -15,6 +15,6 @@ body{ /* Normal  */
   
 </style>
 
-The area of interest is a grassland located in nothern spain. It is used for kettle and is regularly mowed. On the right, you can see an <a href="https://en.wikipedia.org/wiki/Orthophoto" target="_blank">ortophoto</a> of the area of interest, recored by a drone in Summer 2013. Even without a closer look, you might already see the dark green rings all over the place. Those are the Fairy Rings. 
+The area of interest is a grassland located in nothern spain. It is used for kettle and is regularly mowed. On the right, you can see an <a href="https://en.wikipedia.org/wiki/Orthophoto" target="_blank">ortophoto</a> of the area of interest, recored by a drone in Summer 2013. Even without a closer look, you might already see the dark green rings all over the place. Those are the *Fairy Rings*. 
 Now, we will use this image and feed it to our algorithms.
 

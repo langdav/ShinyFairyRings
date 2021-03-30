@@ -15,6 +15,5 @@ body{ /* Normal  */
   
 </style>
 
+* RGB-Band
 * standard green channel of an RGB image.
-* Formula: none
-* Value Range (within whole layer): 0 -- 255.
