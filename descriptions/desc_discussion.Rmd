@@ -1,0 +1,24 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+So, taking everything into consideration, which one do we believe to be the better method for predicting *Fairy Rings* in an area like our *spanish mountain meadow*? Well, as so often, this highly depends on your data, your usecase and your computational ressources. *Which is your preferred programming language?* -- we worked with RStudio for *SegOptim* and Python for *U-Net*. *What do you want to detect?* -- our findings refer to *Fairy Ring* but we cannot make a statement on other things. **Etc.**  
+For us, *U-Net* prove to be the better choice. It had better results with a higher accuracy and sharper images and relied solely on the RGB-image without the need to create other synthetic channels. It even was (slightly) faster with regards to processing time. So, for the detection of *Fairy Rings* on a nothern spanish mountain meadow, it performed overall better that *SegOptim*.
+
+
+Finally, I would like to remind you to what I mentioned (and what you might have thought) in the beginning: detecting *Fairy Rings* computationally is not an easy task, even though it might seem quite simple based on how easy it is for us to detect them on a picture. In the end, what the great Dumbeldore said to Harry holds true: *Don’t count your owls before they are delivered.*
+
+

@@ -60,6 +60,7 @@ shinyServer(function(input, output, session) {
   #------------------------------------------------------------
   output$results_all <- plotting_stuff("comparison_all",1800,450)
   output$validation <- plotting_stuff("validation", 500)
+  output$left_corner <- plotting_stuff("rgb_lin_left_corner", 500, 450)
   
   output$plotly_result <- renderPlotly(
     plotly_result <- readRDS(paste0("data/plotly/", names(results_list)[as.integer(input$chosen_result)], ".rds"))

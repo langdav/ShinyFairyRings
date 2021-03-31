@@ -7,14 +7,14 @@ shinyUI(dashboardPagePlus(skin = "blue",
                           
                           sidebar = dashboardSidebar(
                             sidebarMenu(
-                              menuItem("Research question", tabName = "rq",icon = icon("microscope")),
+                              menuItem("Research question", tabName = "rq",icon = icon("search")),
                               menuItem("Methods", tabName = "methods", icon = icon("microscope"), startExpanded = FALSE,
                                        menuSubItem("Approach: SegOptim", tabName = "seg",icon = icon("object-group")),
                                        menuSubItem("Approach: U-Net", tabName = "unet",icon = icon("project-diagram"))),
-                              menuItem("Data", tabName = "methods", icon = icon("microscope"), startExpanded = FALSE,
+                              menuItem("Data", tabName = "methods", icon = icon("database"), startExpanded = FALSE,
                                        menuSubItem("Training areas", tabName = "train", icon = icon("train")),
                                        menuSubItem("Rasterstack", tabName = "rasterstack",icon = icon("layer-group"))),
-                              menuItem("Results", tabName = "results",icon = icon("university"))
+                              menuItem("Results", tabName = "results",icon = icon("desktop"))
                             )
                           ),
                           
@@ -106,7 +106,8 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                      ),
                                                      column(width = 5, offset = 0,
                                                             imageOutput(outputId = "unet_architecture",
-                                                                        inline = T) %>% withSpinner(color="#0dc5c1")
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                            h5("Structure of the U-Net architecture")
                                                      )
                                                    )
                                                  ),
@@ -211,7 +212,19 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        width = 3, offset = 0,
                                                        imageOutput(outputId = "validation",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                       h5("Validation")
+                                                       h5("Validation"),
+                                                       br(),
+                                                       imageOutput(outputId = "left_corner",
+                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                       h5("Lower left corner of the RGB-image; colorspace is a bit off, likely du to a passing cloud")
+                                                     )
+                                                   ),
+                                                   
+                                                   fluidRow(
+                                                     column(
+                                                       width = 10, offset = 1,
+                                                       h2("Discussion"),
+                                                       includeMarkdown("descriptions/desc_discussion.Rmd")
                                                      )
                                                    ),
                                                    
