@@ -55,7 +55,8 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        ),
                                                        fluidRow(
                                                          imageOutput(outputId = "area_of_interest",
-                                                                     inline = T) %>% withSpinner(color="#0dc5c1")
+                                                                     inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                         h5("Orthophoto of the area of interest.")
                                                        )
                                                      ),
                                                      column(
@@ -75,7 +76,8 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                      ),
                                                      column(width = 3, offset = 0,
                                                             imageOutput(outputId = "segopt_scheme",
-                                                                        inline = T) %>% withSpinner(color="#0dc5c1")
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                            h5("Scheme of the SegOptim workflow.")
                                                      )
                                                    )
                                                  ),
@@ -87,27 +89,28 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    fluidRow(
                                                      column(width = 4, offset = 1,
                                                             h2("U-Net - a convolutional neural network"),
-                                                            includeMarkdown("descriptions/desc_unet.Rmd")
+                                                            includeMarkdown("descriptions/desc_unet.Rmd"),
                                                      ),
                                                      column(width = 5, offset = 1,
                                                             imageOutput(outputId = "unet_example",
                                                                         inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                            h5("Examples of Image Augmentation")
+                                                            h5("Examples of U-Net image augmentation."),
+                                                            
+                                                            imageOutput(outputId = "unet_architecture",
+                                                                        inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                            h5("Structure of the U-Net architecture. 
+                                                               Contracting part on the left, expansive part on the right side.")
                                                      )
                                                    ),
                                                    fluidRow(
                                                      br(),
-                                                     column(width = 5, offset = 1,
-                                                            tags$iframe(width="750", height="500",
+                                                     column(width = 10, offset = 2,
+                                                            h3("An explanation form the U-Net authors on how their algorithm works."),
+                                                            tags$iframe(width="1000", height="750",
                                                                         src="https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/u-net-teaser.mp4",
-                                                                        frameborder="0",
-                                                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture",
+                                                                        frameborder="2",
+                                                                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture",
                                                                         allowfullscreen=NA)
-                                                     ),
-                                                     column(width = 5, offset = 0,
-                                                            imageOutput(outputId = "unet_architecture",
-                                                                        inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                            h5("Structure of the U-Net architecture")
                                                      )
                                                    )
                                                  ),
@@ -121,7 +124,6 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                             h2("Input data - Training areas")
                                                      )
                                                    ),
-                                                   
                                                    fluidRow(
                                                      column(width = 6, offset = 1,
                                                             includeMarkdown("descriptions/desc_training.Rmd")
@@ -129,7 +131,9 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                      column(
                                                        width = 3, offset = 0,
                                                        imageOutput(outputId = "training",
-                                                                   inline = T) %>% withSpinner(color="#0dc5c1"))
+                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                       h5("Training areas (white boxes) and their positions within the area of interest.")
+                                                     )
                                                    )
                                                  ),
                                                  
@@ -144,7 +148,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        imageOutput(outputId = "rasterstack_demo",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),
                                                        h5("The original image was (left) was reduced to the extend of the image 
-                                                          in the middle and resampled to a resolution of 10x10cm"),
+                                                          in the middle and resampled to a resolution of 10x10cm."),
                                                        br())),
                                                    fluidRow(
                                                      column(
@@ -202,7 +206,6 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                                linear-stretched values for visibility of the Fairy Rings (right).")
                                                      )
                                                    ),
-                                                   
                                                    fluidRow(
                                                      column(
                                                        width = 7, offset = 1,
@@ -216,10 +219,9 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        br(),
                                                        imageOutput(outputId = "left_corner",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                       h5("Lower left corner of the RGB-image; colorspace is a bit off, likely du to a passing cloud")
+                                                       h5("Lower left corner of the RGB-image; colorspace is a bit off, likely du to a passing cloud.")
                                                      )
                                                    ),
-                                                   
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,
@@ -227,7 +229,6 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                        includeMarkdown("descriptions/desc_discussion.Rmd")
                                                      )
                                                    ),
-                                                   
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,

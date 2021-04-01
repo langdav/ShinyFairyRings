@@ -37,7 +37,7 @@ shinyServer(function(input, output, session) {
   ## plot unet_architecture & example###
   #-------------------------------------
   output$unet_architecture <- plotting_stuff("u-net-architecture",750, 500)
-  output$unet_example <- plotting_stuff("unet_example", 750, 750)
+  output$unet_example <- plotting_stuff("unet_example", 750, 500)
   
   ## plot training area ###
   #------------------------
