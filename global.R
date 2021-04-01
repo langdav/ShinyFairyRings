@@ -25,7 +25,7 @@ plotting_stuff <- function(name_of_image, w = 600, h = 500){
 
 # Read Data ####
 #---------------
-fr_selected_brick <- brick("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/input_Stacks/selected_variables.grd")
+#fr_selected_brick <- brick("YOUR_DIRECTORY/selected_variables.grd")
 
 
 ## create/read list of layers for radioButtons-input for plotly_brick ###
@@ -77,7 +77,7 @@ results_list <- list("U-Net" = 1,
 #                        "segoptim_rgb_result" = "SegOptim_RGB",
 #                        "segoptim_result_rasterStack" = "SegOptim_Full_Stack")
 # for(i in 1:length(plotly_results)){
-#   result_brick <- brick(paste0("C:/Users/hhans/HESSENBOX/Umweltysteme_20/segmentation_2020_geo/fuer_david/", names(plotly_results)[i], ".tif"))
+#   result_brick <- brick(paste0("YOUR_DIRECTORY", names(plotly_results)[i], ".tif"))
 #   if(names(plotly_results)[i] == "out_unet"){
 #     values(result_brick)[values(result_brick) == 0] = 1
 #     values(result_brick)[is.na(values(result_brick))] = 0

@@ -2,8 +2,8 @@
 shinyUI(dashboardPagePlus(skin = "blue",
                           title = "Detect Fairy Rings using machine learning",
                           collapse_sidebar = F,
-                          header = dashboardHeader(title = tags$a(href='http://www.natur40.org',
-                                                                  tags$img(src='logo_new.png', width="40px"))),
+                          header = dashboardHeader(title = tags$a(href='https://github.com/langdav/EnvySys_FairyRings',
+                                                                  tags$img(src='logo_new.png', width="50px"))),
                           
                           sidebar = dashboardSidebar(
                             sidebarMenu(
@@ -209,13 +209,23 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    fluidRow(
                                                      column(
                                                        width = 7, offset = 1,
-                                                       includeMarkdown("descriptions/desc_results.Rmd")
+                                                       includeMarkdown("descriptions/desc_results_part1.Rmd"),
+                                                       br(),
+                                                       imageOutput(outputId = "results_table",
+                                                                   inline = T) %>% withSpinner(color="#0dc5c1"),
+                                                       h5("Results of the validation. Numbers show, how often the respective class was counted. 
+                                                          Upper right field: Fairy Ring in validation, classified as Fairy Ring by algorithm; 
+                                                          Upper left field: Fairy Ring in validation, classified as non Fairy Ring by algorithm; 
+                                                          Lower right field: Non Fairy Ring in validation, classified as Fairy Ring by algorithm; 
+                                                          Lower left field: Non Fairy Ring in validation, classified as Non Fairy Ring by algorithm."),
+                                                       br(),
+                                                       includeMarkdown("descriptions/desc_results_part2.Rmd")
                                                      ),
                                                      column(
                                                        width = 3, offset = 0,
                                                        imageOutput(outputId = "validation",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),
-                                                       h5("Validation"),
+                                                       h5("Validation raster. A randomly chosen excerpt of the area of interest, that was classified by hand."),
                                                        br(),
                                                        imageOutput(outputId = "left_corner",
                                                                    inline = T) %>% withSpinner(color="#0dc5c1"),

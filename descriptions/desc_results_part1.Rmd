@@ -1,0 +1,19 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+Looking at the pictures above, you can see three results compared to the RGB-picture on the far right (which is linear-stretched, as this leads to a better visibility of the *Fairy Rings*): *U-Net*, *SegOptim* with RGB-only, *SegOptim* with the 17-layer stack (including the *green* channel) + *blue* and *green* channels. The RGB-*SegOptim*-Model was trained for a more in-depth comparison to the *U-Net* model, as the *U-Net* algorithm did also just use the three RGB-layers. So, comparing those two models' results it is unambiguous that *U-Net* (far left) did an undisputedly better job than SegOptim (middle-left), when solely relying on the RGB-layers. On the other hand, comparing the *U-Net* result with those of the SegOptim trained with the large stack, it remains less clear. Looking at both images reveals, that *U-Net* delivered cleaner structures, whereas the SegOptim algorithm created a noisier image with a lot of small points, classified as *Fairy Ring*, which do not seem to really belong to a larger *Fairy Ring* structure. On the other hand, *U-Net* is missing some structures, that where classified as *Fairy Ring* by *SegOptim* and that seem to belong to a *Fairy Ring*, when comparing it to the RGB-image. However, to validate our findings, we used the validation raster on the right. Here, a section of our area of interest was classified by hand (just like it was done for the training areas). It was then compared to the same section, but this tame classified by the algorithms. From this comparison, we gained the models' accuracy and their F1 values.
+

@@ -48,17 +48,18 @@ shinyServer(function(input, output, session) {
   output$rasterstack_demo <- plotting_stuff("stack_overview", 1600, 500)
   
   output$plotly_stack <- renderPlotly(
-    plotly_stack <- readRDS(paste0("data/plotly/", names(fr_selected_brick)[as.integer(input$chosen_layer)], ".rds"))
+    plotly_stack <- readRDS(paste0("data/plotly/", names(layers)[as.integer(input$chosen_layer)], ".rds"))
   )
   
   output$doc_to_display <- renderUI({
-    layer_description <- paste0("descriptions/layers/", names(fr_selected_small)[as.integer(input$chosen_layer)], ".Rmd")
+    layer_description <- paste0("descriptions/layers/", names(layers)[as.integer(input$chosen_layer)], ".Rmd")
     includeMarkdown(layer_description)
   })
   
   ## plot results & validation & render plotly_result output###
   #------------------------------------------------------------
   output$results_all <- plotting_stuff("comparison_all",1800,450)
+  output$results_table <- plotting_stuff("results_table",1000,150)
   output$validation <- plotting_stuff("validation", 500)
   output$left_corner <- plotting_stuff("rgb_lin_left_corner", 500, 450)
   
