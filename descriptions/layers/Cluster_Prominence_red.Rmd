@@ -1,0 +1,21 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 18px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+* Haralick Texture
+* Minor influence of GLCM-size and noise, increased affection by resolution.
+
+(Brynolfsson et al., 2017)
