@@ -1,5 +1,11 @@
 source("global.R")
 
+for(package in c("shiny", "shinydashboard", "shinydashboardPlus", "Rcpp", "png", "tidyverse", "dygraphs",
+                 "leaflet", "raster", "ggplot2", "rasterVis", "plotly", "shinycssloaders")){
+    library(package,character.only = TRUE)
+}
+rm(package)
+
 shinyServer(function(input, output, session) {
   
   ## plot fairy_drake ###

@@ -1,22 +1,7 @@
 ## load packages ###
 #------------------
-# shinycss needed for adding loading animation
-packages <- c("shiny", "shinydashboard", "Rcpp", "png", "tidyverse", "dygraphs", "leaflet", "raster", "ggplot2", "rasterVis", "plotly", "shinycssloaders")
-for(package in packages){
-  if (!require(package, character.only = TRUE)){
-    install.packages(package)
-    library(package,character.only = TRUE)
-  }
-}
-rm(package, packages)
-
-# install "shinydashboardPlus" version 0.7.5
-if (!require("shinydashboardPlus", character.only = TRUE)){
-  require(devtools)
-  devtools::install_version("shinydashboardPlus", version = "0.7.5")
-  library(shinydashboardPlus)
-}
-
+library(png)
+library(raster)
 
 ## Define plotting function ###
 #------------------------------

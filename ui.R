@@ -1,7 +1,12 @@
+for(package in c("shiny", "shinydashboard", "shinydashboardPlus", "Rcpp", "png", "tidyverse", "dygraphs",
+                 "leaflet", "raster", "ggplot2", "rasterVis", "plotly", "shinycssloaders")){
+  library(package,character.only = TRUE)
+}
+rm(package)
+
 # User interface ----
-shinyUI(dashboardPagePlus(skin = "blue",
+shinyUI(dashboardPage(skin = "blue",
                           title = "Detect Fairy Rings using machine learning",
-                          collapse_sidebar = F,
                           header = dashboardHeader(title = tags$a(href='https://github.com/langdav/EnvySys_FairyRings',
                                                                   tags$img(src='logo_new.png', width="50px"))),
                           
@@ -161,7 +166,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,
-                                                       boxPlus(
+                                                       box(
                                                          width = 12,
                                                          title = "Choose Layer",
                                                          closable = F,
@@ -242,7 +247,7 @@ shinyUI(dashboardPagePlus(skin = "blue",
                                                    fluidRow(
                                                      column(
                                                        width = 10, offset = 1,
-                                                       boxPlus(
+                                                       box(
                                                          width = 12,
                                                          title = NULL,
                                                          closable = F,
