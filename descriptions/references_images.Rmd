@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+Wikipedia contributors, 2021. ‘Fairy ring’. Updated 28 February. https://en.wikipedia.org/w/index.php?title=Fairy_ring&oldid=1009359251.
+
+Wikipedia contributors, 2021. ‘Orthophoto’. Updated 2 May. https://en.wikipedia.org/w/index.php?title=Orthophoto&oldid=1020970836.
+
+
+

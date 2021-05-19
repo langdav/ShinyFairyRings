@@ -1,0 +1,32 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+Eckmüller, Otto, 2007. ‘Götterblick – oder was?’. Österreichische Forstzeitung (11): S. 16.
+Gonçalves, João, 2020. ‘SegOptim - A R package for performing object-based image classification’. Updated 30 July. https://segoptim.bitbucket.io/docs/.
+
+Gonçalves, João, Isabel Pôças, Bruno Marcos, C. A. Mücher, João P. Honrado, 2019. ‘SegOptim—A new R package for optimizing object-based image analyses of high-spatial resolution remotely-sensed data’. International Journal of Applied Earth Observation and Geoinformation 76: pp. 218–230. doi: 10.1016/j.jag.2018.11.011.
+
+Manuel Grizonnet, Julien Michel, Victor Poughon, Jordi Inglada, Mickaël Savinaud, Rémi Cresson, 2017. ‘Orfeo ToolBox: open source processing of remote sensing images’. Open Geospatial Data, Software and Standards 2 (1): pp. 1–8. doi: 10.1186/s40965-017-0031-6.
+
+Meyer, Hanna, and Reudenbach Christoph, 2020. ‘Unmanned Aerial Vehicle Remote Sensing Tools’. Updated 16 July. https://gisma.github.io/uavRst/.
+
+Reudenbach, Christoph, 2021. ‘Spotlight: Variable selection and prediction - Some Aspects of reducing predictors’. Updated 13 April. https://geomoer.github.io/moer-mpg-remote-sensing//unit05/unit04-07_spatial_trainingdata.html#some-aspects-of-reducing-predictors.
+
+Ronneberger, Olaf, Philipp Fischer, Thomas Brox, 2015. U-Net: Convolutional Networks for Biomedical Image Segmentation. http://arxiv.org/pdf/1505.04597v1.
+
+
+
