@@ -1,0 +1,34 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+
+Lisa Bald; MSc Student; Environmental Informatics, Faculty of Geography, Philipps-University Marburg, 35032 Marburg, Germany; Baldl@students.uni-marburg.de
+
+David Langenohl; MSc Student; Environmental Informatics, Faculty of Geography, Philipps-University Marburg, 35032 Marburg, Germany; Langenoh@students.uni-marburg.de
+
+Simon Seyfried; MSc Student; Environmental Informatics, Faculty of Geography, Philipps-University Marburg, 35032 Marburg, Germany; Seyfries@students.uni-marburg.de
+
+Jonas Viehweger; MSc Student; Environmental Informatics, Faculty of Geography, Philipps-University Marburg, 35032 Marburg, Germany; Viehwege@students.uni-marburg.de
+
+Christian Mestre Runge; GAMES Group, Department of Horticulture, Fruit, Growing Botany and Gardening, University of Lleida, 25198 Lleida, Spain; cristian.mestre@hbj.udl.cat
+
+Agustin Lobo; Spanish National Research Council; Geoscience Barcelona (GEO3BCN—CSIC), 08028 Barcelona, Spain; Agustin.Lobo@geo3bcn.csic.es
+
+M.-Teresa Sebastia; GAMES Group, Department of Horticulture, Fruit, Growing Botany and Gardening, University of Lleida; 25198 Lleida, Spain; teresa.sebastia@ctfc.cat
+
+Laboratory ECOFUN, Forest Science and Technology Centre of Catalonia (CTFC),
+25280 Solsona, Catalonia, Spain; https://www.ctfc.cat/en/

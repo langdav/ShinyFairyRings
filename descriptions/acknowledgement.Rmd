@@ -1,0 +1,18 @@
+---
+title: "Untitled"
+author: "David Langenohl"
+date: "16 3 2021"
+output: html_document
+---
+
+<style type="text/css">
+
+body{ /* Normal  */
+      font-size: 20px;
+      font-family: "Times New Roman", Times, serif;
+      color: Black;
+  }
+  
+</style>
+
+We would like to thank the following people, without whom we would not have been able to complete this project: The GAMES Group team at Department of Horticulture, Fruit, Growing Botany and Gardening at University of Lleida, Spain, especially to M.-Teresa Sebastia, Professor at University of Lleida and Coordinator of the research group GAMES (UdL-CTFC) and the Laboratory ECOFUN (Functional Ecology and Global Change) and affiliated scientist of the Forest Science and Technology Center of Catalonia (CTFC). Furthermore we would like to thank Dr. Agustin Lobo, part of Geoscience Barcelona (GEO3BCN—CSIC), department of Environmental Geology and Geohazards, Environmental Changes in the Geological Record. We are grateful for cooperation, acceptability to the provided data-sets and kind communication in terms of solving issues of all kinds. And special thanks to Christian Mestre Runge, PhD Student at GAMES Group, Department of Horticulture, Fruit, Growing Botany and Gardening at University of Lleida for joint work, scientific discussions, elaboration of the workflow and his visit to Marburg. Further thanks go to our course instructor Dr. Christoph Reudenbach, Environmental Informatic of University Marburg for assisting us at all kind of matters related to finishing this project. 

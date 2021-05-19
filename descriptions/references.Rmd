@@ -27,6 +27,3 @@ Meyer, Hanna, and Reudenbach Christoph, 2020. ‘Unmanned Aerial Vehicle Remote 
 Reudenbach, Christoph, 2021. ‘Spotlight: Variable selection and prediction - Some Aspects of reducing predictors’. Updated 13 April. https://geomoer.github.io/moer-mpg-remote-sensing//unit05/unit04-07_spatial_trainingdata.html#some-aspects-of-reducing-predictors.
 
 Ronneberger, Olaf, Philipp Fischer, Thomas Brox, 2015. U-Net: Convolutional Networks for Biomedical Image Segmentation. http://arxiv.org/pdf/1505.04597v1.
-
-
-

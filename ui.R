@@ -8,7 +8,7 @@ rm(package)
 shinyUI(dashboardPage(skin = "blue",
                       title = "Detect Fairy Rings using machine learning",
                       header = dashboardHeader(title = tags$a(href='https://github.com/langdav/EnvySys_FairyRings',
-                                                              tags$img(src='logo_new.png', width="50px"))),
+                                                              tags$img(src='logo.png', width="180px"))),
                       
                       sidebar = dashboardSidebar(
                         sidebarMenu(
@@ -20,7 +20,8 @@ shinyUI(dashboardPage(skin = "blue",
                                    menuSubItem("Training areas", tabName = "train", icon = icon("train")),
                                    menuSubItem("Rasterstack", tabName = "rasterstack",icon = icon("layer-group"))),
                           menuItem("Results", tabName = "results",icon = icon("desktop")),
-                          menuItem("References", tabName = "references", icon = icon("book"))
+                          menuItem("References", tabName = "references", icon = icon("book")),
+                          menuItem("Authors", tabName = "authors", icon = icon("users"))
                         )
                       ),
                       
@@ -268,8 +269,8 @@ shinyUI(dashboardPage(skin = "blue",
                                                )
                                              ),
                                              
-                                             ## Tab: Results ###
-                                             #------------------
+                                             ## Tab: References ###
+                                             #---------------------
                                              tabItem(
                                                tabName = "references",
                                                fluidRow(
@@ -280,6 +281,22 @@ shinyUI(dashboardPage(skin = "blue",
                                                    br(),
                                                    h2("Other Sources"),
                                                    includeMarkdown("descriptions/references_images.Rmd")
+                                                 )
+                                               )
+                                             ),
+                                             
+                                             ## Tab: Authors ###
+                                             #------------------
+                                             tabItem(
+                                               tabName = "authors",
+                                               fluidRow(
+                                                 column(
+                                                   width = 10, offset = 1,
+                                                   h2("Authors"),
+                                                   includeMarkdown("descriptions/authors.Rmd"),
+                                                   br(),
+                                                   h2("Acknowledgement"),
+                                                   includeMarkdown("descriptions/acknowledgement.Rmd")
                                                  )
                                                )
                                              )
