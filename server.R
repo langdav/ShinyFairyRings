@@ -34,7 +34,7 @@ shinyServer(function(input, output, session) {
   
   ## plot area of interest ###
   #---------------------------
-  output$area_of_interest <- plotting_stuff("aoi_all", 650, 550)
+  output$area_of_interest <- plotting_stuff("aoi_all", 550, 450)
   
   ## plot segopt_scheme ###
   #----------------------------
